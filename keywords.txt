@@ -1,0 +1,2 @@
+ObsWsClient	KEYWORD1
+ObsEvent	KEYWORD1

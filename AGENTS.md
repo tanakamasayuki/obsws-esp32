@@ -30,6 +30,24 @@ This document defines how human maintainers and automation agents collaborate ar
 - Ensure JSON payload handling is memory-aware (no dynamic allocations on the main loop when avoidable).
 - Focus on the Arduino toolchain; contributions targeting native ESP-IDF support should be proposed separately before implementation.
 
+## Build & Verification
+
+- **Tooling**: Require Arduino CLI ≥ 1.3.1 with the ESP32 core (`arduino-cli core install esp32:esp32`). Keep `arduino-cli` on the system `PATH` for CI and local scripts.
+- **Config files**: Use the repository-level `arduino-cli.yaml` for global settings and the sketch-local `sketch.yaml` profiles to avoid passing `--fqbn` manually.
+- **Quick compile (human check)**:
+   ```powershell
+   # Run from the repository workspace
+   arduino-cli compile --config-file arduino-cli.yaml examples\ObsWsEsp32Connect
+   ```
+- **JSON build report (CI or tooling)**:
+   ```powershell
+   # Run from the repository workspace
+   powershell -Command "arduino-cli --json compile examples\ObsWsEsp32Connect | Tee-Object -FilePath build\compile-report.json"
+   ```
+   The command blocks until the build completes (~30s on Windows) and emits a machine-readable report capturing memory usage, dependency metadata, and the build cache path.
+- Ensure the target folder exists before redirecting (e.g., `if not exist build mkdir build`).
+- **CI hint**: For multiple sketches, iterate over `examples/*` and run `arduino-cli compile --config-file arduino-cli.yaml --format json` per sketch, archiving the resulting reports as artifacts.
+
 ## Testing Strategy (TBD)
 
 | Layer | Goal | Tooling |
