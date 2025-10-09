@@ -3,7 +3,15 @@ profiles:
   esp32:
     fqbn: esp32:esp32:esp32:UploadSpeed=115200
     platforms:
-      - platform: esp32:esp32 (3.3.1)
+      - platform: esp32:esp32 (3.3.2)
+        platform_index_url: https://espressif.github.io/arduino-esp32/package_esp32_index.json
+    libraries:
+      - dir: ../../
+
+  m5stack_atom:
+    fqbn: esp32:esp32:m5stack_atom
+    platforms:
+      - platform: esp32:esp32 (3.3.2)
         platform_index_url: https://espressif.github.io/arduino-esp32/package_esp32_index.json
     libraries:
       - dir: ../../

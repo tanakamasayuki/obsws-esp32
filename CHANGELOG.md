@@ -17,3 +17,5 @@ This project adheres to [Semantic Versioning](https://semver.org/).
   MITライセンスおよびArduinoライブラリマネージャ向けメタデータ（`library.properties`, `keywords.txt`）。
 - Build artifacts ignored via `.gitignore`.
   `.gitignore` でビルド生成物を除外。
+- Core OBS WebSocket client skeleton with status/error callbacks and reconnect stubs.
+  ステータス・エラーコールバックと再接続スタブを備えたOBS WebSocketクライアント骨組みを追加。

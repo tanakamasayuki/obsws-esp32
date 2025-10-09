@@ -11,6 +11,9 @@ build/
 .tmp/
 .arduino*
 
+# Arduino CLI flags
+.arduino-cli-flags
+
 # Editor and OS junk
 .DS_Store
 Thumbs.db
